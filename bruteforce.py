@@ -43,10 +43,7 @@ for i in range(len(share_list_index)):
 
     for combo in combinations_pool:
         combo_profit = get_shares_total_profit(combo, share_list)
-        """
-        if combo_profit != 0:
-            print(f"{combo} -> {combo_profit}")
-        """
+
         if combo_profit > best_combo_profit:
             best_combo_profit = combo_profit
             best_combo = combo
