@@ -4,7 +4,7 @@ import sys
 import csv
 
 
-def get_list_from_csv(file_name, skip_header=True):
+def get_list_from_csv(file_name, list_length: int, skip_header=True):
     """
     gets csv filename to read from /ressource/ folder
 
@@ -28,7 +28,9 @@ def get_list_from_csv(file_name, skip_header=True):
 
             result.append({"name": line[0],
                            "index": int(line[0].replace("Action-", "")),
-                           "cost": float(line[1]),
-                           "profit": float(line[2].replace("%", "")) / 100})
+                           "cost": int(line[1]),
+                           "rate": float(line[2].replace("%", "")) / 100,
+                           "list_value_at_cost": [0 for i in range(list_length)],
+                           "list_combo_at_cost": [[0] for i in range(list_length)]})
 
     return result
