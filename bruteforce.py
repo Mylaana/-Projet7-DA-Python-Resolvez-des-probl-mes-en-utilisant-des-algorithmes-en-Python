@@ -21,7 +21,7 @@ def get_shares_total_profit(share_combo: tuple, share_list_info: list) -> float:
         for share_info in share_list_info:
             if share_info["index"] == share_index:
                 cost += share_info["cost"]
-                value += share_info["profit"] * share_info["cost"]
+                value += share_info["rate"] * share_info["cost"]
                 break
 
     if cost > MAX_COST:
@@ -30,7 +30,7 @@ def get_shares_total_profit(share_combo: tuple, share_list_info: list) -> float:
     return value
 
 
-share_list: list = get_list_from_csv("test shares")
+share_list: list = get_list_from_csv("test_shares", MAX_COST)
 share_list_index = []
 best_combo: tuple = None
 best_combo_profit: float = 0.0
@@ -48,5 +48,7 @@ for i in range(len(share_list_index)):
             best_combo_profit = combo_profit
             best_combo = combo
 
-print("meilleur combo : " + str(best_combo))
-print("profit total : " + str(best_combo_profit) + "€")
+print("meilleur combo : ")
+for share in best_combo:
+    print(share_list[share - 1]["name"])
+print("profit total : " + str(round(best_combo_profit, 2)) + "€")
