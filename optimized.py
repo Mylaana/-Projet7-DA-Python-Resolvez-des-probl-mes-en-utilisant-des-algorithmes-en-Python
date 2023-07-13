@@ -2,6 +2,8 @@
 optimized solution for the best share's value combination
 using dynamic programming for the Knapsack problem
 """
+import sys
+import math
 from csv_loader import get_list_from_csv
 
 MAX_COST = 500
@@ -30,11 +32,11 @@ def get_shares_total_profit(share_combo: tuple, share_list_info: list) -> float:
     return value
 
 
-def main():
+def main(argv):
     """
     main function
     """
-    share_list: list = get_list_from_csv(file_name="test shares", list_length=MAX_COST+1)
+    share_list: list = get_list_from_csv(file_name=argv, list_length=MAX_COST+1)
     share_list.insert(0, {"name": "Aucun",
                           "index": 0,
                           "cost": 0,
@@ -62,10 +64,11 @@ def main():
 
             if i >= share_list[share_index]["cost"]:
                 share_profit = share_list[share_index]["cost"] * share_list[share_index]["rate"]
-                remaining_cost = i - share_list[share_index]["cost"]
+                remaining_cost = i - math.ceil(share_list[share_index]["cost"])
 
             previous_combo_profit = share_list[share_index - 1]["list_value_at_cost"][i]
             if remaining_cost > 0:
+
                 previous_index_remaining_cost_profit = share_list[
                     share_index - 1]["list_value_at_cost"][remaining_cost]
 
@@ -86,9 +89,16 @@ def main():
     best_combo = share_list[max(share_list_index)]["list_combo_at_cost"][MAX_COST]
     best_combo_profit = share_list[max(share_list_index)]["list_value_at_cost"][MAX_COST]
 
-    print("meilleur combo : " + str(best_combo))
+    print("meilleur combo : ")
+    for share in best_combo:
+        print(share_list[share]["name"])
     print("profit total : " + str(round(best_combo_profit, 2)) + "€")
 
 
 if __name__ == "__main__":
-    main()
+    if not sys.argv[1:]:
+        filename = "test_shares"
+    else:
+        filename = sys.argv[1:][0]
+
+    main(argv=filename)
