@@ -89,10 +89,13 @@ def main(argv):
     best_combo = share_list[max(share_list_index)]["list_combo_at_cost"][MAX_COST]
     best_combo_profit = share_list[max(share_list_index)]["list_value_at_cost"][MAX_COST]
 
+    combo_cost = 0
     print("meilleur combo : ")
     for share in best_combo:
         print(share_list[share]["name"])
-    print("profit total : " + str(round(best_combo_profit, 2)) + "€")
+        combo_cost += share_list[share]["cost"]
+    print(f"profit total : {(round(best_combo_profit, 2)):.2f}€")
+    print(f"cout total : {round(combo_cost,2):.2f}€")
 
 
 if __name__ == "__main__":

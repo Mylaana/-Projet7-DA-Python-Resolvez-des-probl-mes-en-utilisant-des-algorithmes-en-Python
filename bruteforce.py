@@ -48,7 +48,11 @@ for i in range(len(share_list_index)):
             best_combo_profit = combo_profit
             best_combo = combo
 
+combo_cost = 0
 print("meilleur combo : ")
 for share in best_combo:
     print(share_list[share - 1]["name"])
-print("profit total : " + str(round(best_combo_profit, 2)) + "€")
+    combo_cost += share_list[share - 1]["cost"]
+print(f"profit total : {round(best_combo_profit, 2):.2f}€")
+print(f"cout total : {round(combo_cost,2):.2f}€")
+print()
