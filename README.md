@@ -2,12 +2,12 @@
 
 ## Scénario
 Nous sommes en charge de déterminer le meilleur portefeuille d'actions dans une entreprise parmi une liste d'action et dont le cout cumulé total est fixé.
-Le resultat doit être calculé parmi une liste d'un grand nombre d'action et être fourni en moins d'une seconde.
+Le résultat doit être calculé parmi une liste d'un grand nombre d'action et être fourni en moins d'une seconde.
 
 ## 1 - Bruteforce
 L'approche bruteforce teste toutes les combinaisons possibles et détermine la meilleure
 
-Pour executer le script, télécharger/cloner le repository, naviguez vers le dossier contenant le code puis executer dans un terminal :
+Pour exécuter le script, télécharger/cloner le repository, naviguez vers le dossier contenant le code puis exécuter dans un terminal :
 ```
 python bruteforce.py
 ```
@@ -17,7 +17,7 @@ La solution bruteforce ne testera que le contenu du fichier test_shares.csv (20 
 ## 2 - Optimized
 La résolution du problème posé par le scenario peut être découpé en sous problèmes plus petits, nous pouvons donc utiliser la programmation dynamique.
 
-Pour executer le script, télécharger/cloner le repository, naviguez vers le dossier contenant le code puis executer dans un terminal :
+Pour exécuter le script, télécharger/cloner le repository, naviguez vers le dossier contenant le code puis exécuter dans un terminal :
 ```
 python optimized.py nom_fichier
 ```
